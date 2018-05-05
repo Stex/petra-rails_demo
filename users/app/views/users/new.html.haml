@@ -1,0 +1,23 @@
+- content_for :title, 'Add User'
+
+= form_for @user do |f|
+  .row
+    .col-6
+      .form-group
+        = f.label :first_name
+        = f.text_field :first_name, class: 'form-control'
+    .col-6
+      .form_group
+        = f.label :last_name
+        = f.text_field :last_name, class: 'form-control'
+  .row
+    .col-12
+      .form_group
+        = f.label :role
+        = f.select :role, User.roles.keys, {}, class: 'form-control'
+  .row
+    .col-12
+      .actions.pull-right
+        = f.submit nil, class: 'btn btn-primary'
+        or
+        = link_to 'Cancel', users_path

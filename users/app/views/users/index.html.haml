@@ -1,0 +1,29 @@
+- content_for :title do
+  Users
+  %br/
+  %small= link_to 'Add User', new_user_path
+
+%table.table
+  %thead
+    %tr
+      %th First Name
+      %th Last name
+      %th Role
+      %th
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.first_name
+        %td= user.last_name
+        %td= user.role
+        %td
+          = link_to 'Edit', [:edit, user]
+          = link_to 'Destroy', user, method: :delete
+
+    - if Petra.transaction_manager.current_transaction.sections.find(&:persisted?)
+      %tr
+        %td.text-right{colspan: 4}
+          = link_to 'Commit Changes', [:commit, :users], method: :post, class: 'btn btn-success'
+          or
+          = link_to 'Reset', [:reset, :users], method: :post
+
