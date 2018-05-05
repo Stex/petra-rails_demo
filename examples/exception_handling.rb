@@ -9,20 +9,12 @@ user = User.petra.new('Foo', 'Bar')
 
 Petra.transaction(identifier: 'tr1') do
   user.first_name = 'Moo'
-  puts user.name
 end
 
-puts user.name
+user.first_name = 'Hoot'
 
 Petra.transaction(identifier: 'tr1') do
-  user.last_name = 'Mar'
+  puts user.name
+  user.last_name = 'Bam'
   puts user.name
 end
-
-puts user.name
-
-Petra.transaction(identifier: 'tr1') do
-  Petra.commit!
-end
-
-puts user.name
