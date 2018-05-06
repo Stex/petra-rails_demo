@@ -6,9 +6,8 @@
 ---
 
 * Shopping Cart
-  * Temporary data that may become a booking
+* Draft- / Preview Systems
 * Batch editing
-  * Saving changes in the session or an own model
 
 Changes are only visible to the current user until they are final => Sounds like transactions!
 
